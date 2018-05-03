@@ -1,4 +1,4 @@
-CFLAGS += -O2 -msse2 -std=c99
+CFLAGS += -O2 -msse2 -std=c99 -Wall
 LDFLAGS += -static
 SOURCES := $(wildcard *.c)
 OBJECTS := $(patsubst %.c, %.o, $(SOURCES))
@@ -8,7 +8,7 @@ all: hmac_test
 
 
 hmac_test: $(OBJECTS)
-	$(CC) $(OBJECTS) -o hmac_test
+	$(CC) $(OBJECTS) $(LDFLAGS) -o hmac_test
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
